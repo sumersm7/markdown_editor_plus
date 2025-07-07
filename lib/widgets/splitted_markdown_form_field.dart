@@ -255,6 +255,7 @@ class _SplittedMarkdownFormFieldState extends State<SplittedMarkdownFormField> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: TextFormField(
