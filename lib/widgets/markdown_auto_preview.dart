@@ -272,8 +272,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 _textFieldFocusNode.requestFocus();
               },
               child: Align(
-                alignment: align,
-                alignment: Alignment.centerLeft,
+                alignment: align, 
                 child: MarkdownBody(
                   key: const ValueKey<String>("zmarkdown-parse-body"),
                   data: _internalController.text == ""
