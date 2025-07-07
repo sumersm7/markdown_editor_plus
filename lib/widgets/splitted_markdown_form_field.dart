@@ -197,8 +197,7 @@ class SplittedMarkdownFormField extends StatefulWidget {
   final void Function(String?)? onSaved;
 
   @override
-  State<SplittedMarkdownFormField> createState() =>
-      _SplittedMarkdownFormFieldState();
+  State<SplittedMarkdownFormField> createState() => _SplittedMarkdownFormFieldState();
 }
 
 class _SplittedMarkdownFormFieldState extends State<SplittedMarkdownFormField> {
@@ -225,10 +224,8 @@ class _SplittedMarkdownFormFieldState extends State<SplittedMarkdownFormField> {
   Widget build(BuildContext context) {
     return FocusableActionDetector(
       shortcuts: {
-        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyB):
-            BoldTextIntent(),
-        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyI):
-            ItalicTextIntent(),
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyB): BoldTextIntent(),
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyI): ItalicTextIntent(),
       },
       actions: {
         BoldTextIntent: CallbackAction<BoldTextIntent>(
@@ -253,9 +250,9 @@ class _SplittedMarkdownFormFieldState extends State<SplittedMarkdownFormField> {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Row(
                 children: [
@@ -290,9 +287,7 @@ class _SplittedMarkdownFormFieldState extends State<SplittedMarkdownFormField> {
                   Expanded(
                     child: MarkdownBody(
                       // key: const ValueKey<String>("zmarkdown-parse-body"),
-                      data: _internalController.text == ""
-                          ? "_Markdown text_"
-                          : _internalController.text,
+                      data: _internalController.text == "" ? "_Markdown text_" : _internalController.text,
                       selectable: true,
                     ),
                   ),

@@ -286,11 +286,11 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
     return !widget.enableToolBar
         ? _editor()
         : Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _editor(),
+              Expanded(child: _editor()),
 
               // show toolbar
               if (!widget.readOnly)
