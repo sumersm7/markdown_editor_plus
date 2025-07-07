@@ -15,7 +15,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     this.onChanged,
     this.style,
     this.onTap,
-    this.align = Alignment.centerLeft,
+    this.align,
     this.cursorColor,
     this.toolbarBackground,
     this.expandableBackground,
@@ -53,7 +53,7 @@ class MarkdownAutoPreview extends StatefulWidget {
   /// if false, Emoji selection widget will not be displayed
   final bool showEmojiSelection;
 
-  final Align align;
+  final Align? align;
   /// Controls the text being edited.
   ///
   /// If null, this widget will create its own [TextEditingController].
