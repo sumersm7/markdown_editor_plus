@@ -15,7 +15,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     this.onChanged,
     this.style,
     this.onTap,
-    this.align,
+    this.alignment,
     this.cursorColor,
     this.toolbarBackground,
     this.expandableBackground,
