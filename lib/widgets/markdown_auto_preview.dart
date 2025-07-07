@@ -15,7 +15,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     this.onChanged,
     this.style,
     this.onTap,
-    this.align,
+    this.alignment,
     this.cursorColor,
     this.toolbarBackground,
     this.expandableBackground,
@@ -54,6 +54,7 @@ class MarkdownAutoPreview extends StatefulWidget {
   final bool showEmojiSelection;
 
   final Alignment? alignment;
+
   /// Controls the text being edited.
   ///
   /// If null, this widget will create its own [TextEditingController].
@@ -190,11 +191,10 @@ class MarkdownAutoPreview extends StatefulWidget {
 class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   // Internal parameter
   late TextEditingController _internalController;
+  late Alignment _alignment;
 
-  final FocusScopeNode _internalFocus =
-      FocusScopeNode(debugLabel: '_internalFocus');
-  final FocusNode _textFieldFocusNode =
-      FocusNode(debugLabel: '_textFieldFocusNode');
+  final FocusScopeNode _internalFocus = FocusScopeNode(debugLabel: '_internalFocus');
+  final FocusNode _textFieldFocusNode = FocusNode(debugLabel: '_textFieldFocusNode');
 
   late Toolbar _toolbar;
 
@@ -203,6 +203,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   @override
   void initState() {
     _internalController = widget.controller ?? TextEditingController();
+    _alignment = widget.alignment ?? Alignment.centerLeft;
 
     _toolbar = Toolbar(
       controller: _internalController,
@@ -224,10 +225,8 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
   Widget build(BuildContext context) {
     return FocusableActionDetector(
       shortcuts: {
-        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyB):
-            BoldTextIntent(),
-        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyI):
-            ItalicTextIntent(),
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyB): BoldTextIntent(),
+        LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.keyI): ItalicTextIntent(),
       },
       actions: {
         BoldTextIntent: CallbackAction<BoldTextIntent>(
@@ -272,12 +271,11 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 _textFieldFocusNode.requestFocus();
               },
               child: Align(
-                alignment: alignment, 
+                alignment: _alignment,
                 child: MarkdownBody(
                   key: const ValueKey<String>("zmarkdown-parse-body"),
-                  data: _internalController.text == ""
-                      ? widget.hintText ?? "_Markdown text_"
-                      : _internalController.text,
+                  data:
+                      _internalController.text == "" ? widget.hintText ?? "_Markdown text_" : _internalController.text,
                 ),
               ),
             ),
