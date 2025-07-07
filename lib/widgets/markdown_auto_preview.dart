@@ -15,7 +15,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     this.onChanged,
     this.style,
     this.onTap,
-    this.alignment = Alignment.centerLeft,
+    this.align = Alignment.centerLeft,
     this.cursorColor,
     this.toolbarBackground,
     this.expandableBackground,
@@ -53,7 +53,7 @@ class MarkdownAutoPreview extends StatefulWidget {
   /// if false, Emoji selection widget will not be displayed
   final bool showEmojiSelection;
 
-  final Align alignment;
+  final Align align;
   /// Controls the text being edited.
   ///
   /// If null, this widget will create its own [TextEditingController].
@@ -272,7 +272,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 _textFieldFocusNode.requestFocus();
               },
               child: Align(
-                alignment: alignment,
+                alignment: align,
                 alignment: Alignment.centerLeft,
                 child: MarkdownBody(
                   key: const ValueKey<String>("zmarkdown-parse-body"),
